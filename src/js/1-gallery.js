@@ -114,20 +114,9 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
   }
 })();
 
-// lightbox = new SimpleLightbox('.gallery a', {
-//   overlay: true, // показати затемнений фон
-//   captions: true, // показати підписи до зображень
-//   spinner: true, // показати спінер під час завантаження зображень
-//   disableScroll: true, // заборонити прокручування сторінки під час відкритого лайтбоксу
-//   alertError: true, // показати повідомлення про помилку завантаження зображення
-// });
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captions: true,
-  // captionType: 'attr',
   captionsData: 'alt',
-  // captionPosition: 'bottom',
-  // fadeSpeed: 850,
   captionSelector: 'img',
   captionDelay: 250,
 });
