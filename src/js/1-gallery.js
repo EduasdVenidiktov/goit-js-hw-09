@@ -1,5 +1,8 @@
 'use strict';
 
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
+
 const images = [
   {
     preview:
@@ -66,57 +69,26 @@ const images = [
   },
 ];
 
-import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 (function () {
-  function imagesTemplates() {
-    const result = images
+  function createGalleryMarkup(images) {
+    return images
       .map(({ preview, original, description }) => {
         return `
-        
-
-        <li class="gallery-item">
-  <a class="gallery-link" href="${original}">
-    <img class="gallery-image" src="${preview}" alt="${description}" />
-  </a>
-</li>`;
+          <li class="gallery-item">
+            <a class="gallery-link" href="${original}">
+              <img class="gallery-image" src="${preview}" alt="${description}" />
+            </a>
+          </li>
+        `;
       })
-      .join('\n');
-
-    galleryList.insertAdjacentHTML('beforeend', result);
+      .join('');
   }
-
   const galleryList = document.querySelector('.gallery');
-  imagesTemplates();
-
-  galleryList.addEventListener('click', event => {
-    event.preventDefault();
-
-    const clickedImage = event.target.classList.contains('gallery-image');
-
-    if (clickedImage) {
-      const originalSource = event.target.dataset.source;
-      if (originalSource) {
-        onClickModal(originalSource);
-      }
-    }
+  galleryList.insertAdjacentHTML('beforeend', createGalleryMarkup(images));
+  const lightbox = new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionsData: 'alt',
+    captionSelector: 'img',
+    captionDelay: 250,
   });
-
-  function onClickModal(originalSource) {
-    basicLightbox.create(
-      `
-        <img
-          src="${originalSource}"
-        />
-      `
-    );
-  }
 })();
-
-const lightbox = new SimpleLightbox('.gallery a', {
-  captions: true,
-  captionsData: 'alt',
-  captionSelector: 'img',
-  captionDelay: 250,
-});
