@@ -11,6 +11,11 @@ function onFormSubmit(ev) {
 
   const email = form.elements.email.value.trim();
   const message = form.elements.message.value.trim();
+
+  if (!email || !message) {
+    alert('Будь ласка, заповніть обидва поля перед відправленням форми.');
+    return;
+  }
   const data = {
     email,
     message,
@@ -23,6 +28,7 @@ function onFormSubmit(ev) {
 function onFormInput() {
   const email = form.elements.email.value.trim();
   const message = form.elements.message.value.trim();
+
   const data = {
     email,
     message,
@@ -42,7 +48,7 @@ function loadFromLs(key) {
 
   try {
     return JSON.parse(zip) || {};
-  } catch {
+  } catch (error) {
     return {};
   }
 }

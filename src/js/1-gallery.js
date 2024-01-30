@@ -86,7 +86,6 @@ const images = [
   const galleryList = document.querySelector('.gallery');
   galleryList.insertAdjacentHTML('beforeend', createGalleryMarkup(images));
   const lightbox = new SimpleLightbox('.gallery a', {
-    captions: true,
     captionsData: 'alt',
     captionSelector: 'img',
     captionDelay: 250,
