@@ -4,5 +4,5 @@ import"./assets/modulepreload-polyfill-ec808ebb.js";import{S as e}from"./assets/
               <img class="gallery-image" src="${a}" alt="${t}" />
             </a>
           </li>
-        `).join("")}document.querySelector(".gallery").insertAdjacentHTML("beforeend",o(n)),new e(".gallery a",{captions:!0,captionsData:"alt",captionSelector:"img",captionDelay:250})})();
+        `).join("")}document.querySelector(".gallery").insertAdjacentHTML("beforeend",o(n)),new e(".gallery a",{captionsData:"alt",captionSelector:"img",captionDelay:250})})();
 //# sourceMappingURL=commonHelpers.js.map
